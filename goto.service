@@ -1,0 +1,32 @@
+[Unit]
+Description=Naive redirection website
+Requires=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=3sec
+ExecStart=/opt/goto/goto -c /opt/goto/goto.json
+StartLimitInterval=1min
+StartLimitBurst=6
+
+StandardOutput=journal
+StandardError=journal
+StandardInput=null
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+InaccessiblePaths=/run
+TemporaryFileSystem=/var:ro
+
+PrivateUsers=true
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

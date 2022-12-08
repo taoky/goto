@@ -1,0 +1,6 @@
+{
+    "redirections": {
+        "/example": "http://www.example.com"
+    },
+    "bind": "localhost:1234"
+}
